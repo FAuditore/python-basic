@@ -1,5 +1,7 @@
 # list 列表
 # [element]
+import random
+
 l = ['2', '1', '3', '4', '5']
 
 del l[0]
@@ -18,4 +20,6 @@ ranks = [str(n) for n in range(2, 11)] + list('JQKA')
 
 cards = [(suit, rank) for suit in suits
          for rank in ranks]
-# [('spades', '2'), ('spades', '3'), ('spades', '4'),...
+random.shuffle(cards)
+print(cards)
+# [('clubs', '4'), ('hearts', '10'), ('diamonds', '9'),...

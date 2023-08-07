@@ -1,12 +1,11 @@
 import abc
-from abc import ABC
+import collections
 
-
-class Lottery(abc.ABC):
-    """
-        Abstract Base Class, ABC抽象基类
-
-        class ABCMeta(type)
+"""
+    abc Abstract Base Class, 抽象基类
+    该模块提供了一个元类 ABCMeta，可以用来定义抽象类 
+    另外还提供一个工具类 ABC，可以用它以继承的方式定义抽象基类 
+    class ABCMeta(type)
         Use this metaclass to create an ABC.  An ABC can be subclassed
         directly, and then acts as a mix-in class.  You can also register
         unrelated concrete classes (even built-in classes) and unrelated
@@ -16,7 +15,10 @@ class Lottery(abc.ABC):
         their MRO (Method Resolution Order) nor will method
         implementations defined by the registering ABC be callable (not
         even via super()).
-    """
+"""
+
+
+class Lottery(abc.ABC):
 
     # 定义抽象方法 元类必须继承自ABCMeta
     # 子类必须实现所有抽象方法, 否则无法实例化
@@ -52,3 +54,13 @@ class Slot(Lottery):
 
     def set(self, iterable):
         self._items.extend(iterable)
+
+    def __len__(self):
+        return len(self._items)
+
+
+# class collections.abc.Sized 提供了 __len__() 方法的抽象基类。
+# https://docs.python.org/zh-cn/3.11/library/collections.abc.html
+from collections.abc import Sized
+
+print(isinstance(Slot([]), Sized), issubclass(Slot, Sized))  # True
