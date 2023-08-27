@@ -1,14 +1,12 @@
-"""
-    序列类型: 实现 __getitem__(self, item) 方法和 __len__(self) 方法
-    容器序列: 存放不同类型数据
-        list tuple collections.deque
-    扁平序列: 存放相同类型数据
-        str bytes bytearray memoryview array.array
-    可变序列:
-        list bytearray array.array collections.deque
-    不可变序列:
-        tuple str bytes
-"""
+# 序列类型: 实现 __getitem__(self, item) 方法和 __len__(self) 方法
+# 容器序列: 存放不同类型数据
+#     list tuple collections.deque
+# 扁平序列: 存放相同类型数据
+#     str bytes bytearray memoryview array.array
+# 可变序列:
+#     list bytearray array.array collections.deque
+# 不可变序列:
+#     tuple str bytes
 import random
 
 # 序列拼接 + *

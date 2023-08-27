@@ -1,5 +1,7 @@
 import abc
 import collections
+import random
+import typing
 
 """
     abc Abstract Base Class, 抽象基类
@@ -64,3 +66,28 @@ class Slot(Lottery):
 from collections.abc import Sized
 
 print(isinstance(Slot([]), Sized), issubclass(Slot, Sized))  # True
+
+
+# 虚拟子类
+# 注册的类会变成抽象基类的虚拟子类，issubclass 和 isinstance 等函数都能识别
+# 但是注册的类不会从抽象基类中继承任何方法或属性。
+# 虚拟子类不会继承注册的抽象基类，而且任何时候都不会检查它是否符合抽象基类的接口，即便在实例化时也不会检查
+
+# 注册成Lottery的虚拟子类 不会继承方法和属性 类型检查会通过
+@Lottery.register
+class SlotV2(list):
+    def pick_v2(self):
+        # 从list继承的__bool__ 不为空时为True
+        if self:
+            return self.pop(random.randrange(len(self)))
+        else:
+            raise LookupError('empty list')
+
+    # 类属性(方法),与list实现一样
+    set_v2 = list.extend
+
+
+print(issubclass(SlotV2, Lottery))  # True
+print(isinstance(SlotV2(), Lottery))  # True
+print(SlotV2.__mro__)  # (<class '__main__.SlotV2'>, <class 'list'>, <class 'object'>) mro 方法解析顺序
+print(Lottery.__subclasses__())  # [<class '__main__.Slot'>]
