@@ -16,6 +16,8 @@ d = dict([('two', 2), ('one', 1), ('three', 3)])
 d = {k: v for k, v in zip('abc', (1, 2, 3))}
 print(d)  # {'a': 1, 'b': 2, 'c': 3}
 
+print(list(d))  # 返回所有键的列表 ['a', 'b', 'c']
+
 # d[k] <==> d.__getitem__(k) 若k不存在,生成KeyError
 d.__getitem__('c')  # 3
 

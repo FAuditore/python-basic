@@ -24,6 +24,15 @@ b = [['a'] * 3] * 3  # [['a', 'a', 'a'], ['a', 'a', 'a'], ['a', 'a', 'a']]
 b[1][0] = 'X'
 print(b)  # [['X', 'a', 'a'], ['X', 'a', 'a'], ['X', 'a', 'a']]
 
+# 序列比较
+# 比较使用 字典式 顺序
+assert ((1, 2, 3) < (1, 2, 4))
+assert ('ABC' < 'C' < 'Pascal' < 'Python')
+assert ((1, 2, 3, 4) < (1, 2, 4))
+assert ((1, 2) < (1, 2, -1))
+assert ((1, 2, 3) == (1.0, 2.0, 3.0))
+assert ((1, 2, ('aa', 'ab')) < (1, 2, ('abc', 'a'), 4))
+
 
 # 自定义序列
 class CustomSeq(object):
@@ -62,4 +71,3 @@ print(14 in c)  # 0 1 2 3 4 True
 
 random.shuffle(c)  # 2 3 2 2 1 1
 print(c[:])  # slice(None, None, None) [10, 11, 13, 12, 14]
-
