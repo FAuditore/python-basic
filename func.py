@@ -1,5 +1,7 @@
 from functools import reduce, partial
 
+__all__ = ["my_sum", "my_div"]
+
 
 def my_sum(a, b):
     """
