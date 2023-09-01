@@ -1,4 +1,4 @@
-from sequence.list import ranks, suits
+from datastructures.list import ranks, suits
 
 
 def f_args(name, *args, **kwargs):

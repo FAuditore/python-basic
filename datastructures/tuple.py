@@ -4,6 +4,15 @@ from collections import namedtuple
 # (element)
 t = ('1', '2', '5') + ('3', '4')  # ('1', '2', '5', '3', '4')
 
+# 元组由多个用逗号隔开的值组成
+t = 123, 'aaa', t  # (123, 'aaa', ('1', '2', '5', '3', '4'))
+
+# 只有一个元素的元组可以用逗号构建
+singleton = 'abc',  # ('abc',)
+
+# t[0]=100
+# TypeError: 'tuple' object does not support item assignment
+
 # named tuple 具名元组
 Stu = namedtuple('Student', 'no name age')  # Stu = namedtuple('Student', ['no', 'name', 'age'])
 
