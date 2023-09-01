@@ -5,8 +5,8 @@ import typing
 
 """
     abc Abstract Base Class, 抽象基类
-    该模块提供了一个元类 ABCMeta，可以用来定义抽象类 
-    另外还提供一个工具类 ABC，可以用它以继承的方式定义抽象基类 
+    该模块提供了一个元类 ABCMeta, 可以用来定义抽象类 
+    另外还提供一个工具类 ABC, 可以用它以继承的方式定义抽象基类 
     class ABCMeta(type)
         Use this metaclass to create an ABC.  An ABC can be subclassed
         directly, and then acts as a mix-in class.  You can also register
@@ -69,9 +69,9 @@ print(isinstance(Slot([]), Sized), issubclass(Slot, Sized))  # True
 
 
 # 虚拟子类
-# 注册的类会变成抽象基类的虚拟子类，issubclass 和 isinstance 等函数都能识别
-# 但是注册的类不会从抽象基类中继承任何方法或属性。
-# 虚拟子类不会继承注册的抽象基类，而且任何时候都不会检查它是否符合抽象基类的接口，即便在实例化时也不会检查
+# 注册的类会变成抽象基类的虚拟子类, issubclass 和 isinstance 等函数都能识别
+# 但是注册的类不会从抽象基类中继承任何方法或属性
+# 虚拟子类不会继承注册的抽象基类, 而且任何时候都不会检查它是否符合抽象基类的接口, 即便在实例化时也不会检查
 
 # 注册成Lottery的虚拟子类 不会继承方法和属性 类型检查会通过
 @Lottery.register

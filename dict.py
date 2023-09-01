@@ -24,6 +24,8 @@ d.get('d', 10)  # 10
 
 # d[k]=v <==> d.__setitem__(k,v)
 d.__setitem__('c', 4)  # d->{'a': 1, 'b': 2, 'c': 4}
+d.update(c=5)  # d->{'a': 1, 'b': 2, 'c': 5}
+d.update({'a': 10, 'b': 9, 'c': 8})  # d->{'a': 10, 'b': 9, 'c': 8}
 
 # d.setdefault(k,v) 如果k存在,返回v 如果k不存在,设置为v并返回
 print(d.setdefault('f', 100))  # 100 d->{'a': 1, 'b': 2, 'c': 4, 'f': 100}

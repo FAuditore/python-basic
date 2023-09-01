@@ -2,12 +2,21 @@
 # [element]
 import random
 
-l = ['2', '1', '3', '4', '5']
+l = ['2', '1', '3', '4'] + ['5']  # ['2', '1', '3', '4', '5']
 
-del l[0]
+del l[0]  # ['1', '3', '4', '5']
 l.reverse()  # l -> ['5', '4', '3', '1']
-newL = sorted(l)  # newL -> ['1', '3', '4', '5'] l不变
+newL = sorted(l)  # newL -> ['1', '3', '4', '5']
 l.sort(reverse=False, key=int)  # l - > ['1', '3', '4', '5'] key=int(element)
+l[2:4] = []  # l->['1', '3']
+
+# 浅拷贝列表
+l2 = l[:]
+l3 = l2.copy()
+# 修改不可变对象时会产生新的引用 参看 datamodel/_copy.py
+print(l2[0] is l3[0])  # True
+l3[0] = '100'
+print(l2[0] is l3[0])  # False
 
 suits = 'spades diamonds clubs hearts'.split()
 # ['spades', 'diamonds', 'clubs', 'hearts']

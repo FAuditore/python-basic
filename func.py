@@ -2,6 +2,9 @@ from functools import reduce, partial
 
 
 def my_sum(a, b):
+    """
+        函数内的第一条语句是字符串时, 该字符串就是文档字符串, 也称为 docstring
+    """
     return a + b
 
 
