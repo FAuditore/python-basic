@@ -14,7 +14,7 @@ from func import my_sum
 my_sum(1, 2)
 
 # from xxx import *导入所有不以下划线_开头的名称
-# 代码定义了列表 __all__, 运行 from package import * 时, 它就是被导入的模块名列表
+# 如果包的 __init__.py 代码定义了列表 __all__, 运行 from package import * 时, 它就是被导入的模块名列表
 from func import *  # __all__ = ["my_sum", "my_div"]
 
 my_sum(1, 2)
@@ -37,6 +37,9 @@ print(func.__name__)  # func
 print(dir(func))  # ['FuncObject', '__builtins__', '__cached__', '__doc__',...]
 # dir不会列出内置函数和变量的名称
 print(dir(builtins))  # ['ArithmeticError', 'AssertionError',...,'type', 'vars', 'zip']
+
+# __init__.py 将该目录视为一个Python包(module)
+# 其中可以定义常量或变量, 初始化命名空间, 设置__all__
 
 # 为了快速加载, Python把模块的编译版本缓存在 __pycache__ 目录中,文件名为 [module].[version].pyc
 # __pycache__/func.cpython-311.pyc

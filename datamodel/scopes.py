@@ -3,19 +3,19 @@ from dis import dis
 # 函数在执行时使用函数局部变量符号表, 所有函数变量赋值都存在局部符号表中
 # 引用变量时, 首先在局部符号表里查找变量, 然后是外层函数局部符号表, 再是全局符号表, 最后是内置名称符号表
 
+# global 语句用于表明特定变量在全局作用域里, 并应在全局作用域中重新绑定
+# nonlocal 语句表明特定变量在外层作用域中, 并应在外层作用域中重新绑定
 g = 1
 
 
+# 默认在函数中的变量为局部变量
+# def f():
+#   print(g) # UnboundLocalError: cannot access local variable
+#            # 'g' where it is not associated with a value
+# f()
+
+
 def f():
-    """
-       b = 6
-       def f():
-           print(b) # UnboundLocalError: cannot access local variable
-                    # 'b' where it is not associated with a value
-           b = 9
-       f()
-       默认在函数中的变量为局部变量
-    """
     global g  # 声名为全局变量
     print(g)
     g = 5
@@ -39,6 +39,33 @@ print(dis(f))
 #              46 LOAD_CONST               0 (None)
 #              48 RETURN_VALUE
 # None
+
+# 局部赋值（这是默认状态）不会改变scope_test对spam的绑定
+# nonlocal赋值会改变scope_test对spam的绑定
+# global赋值会改变模块层级的绑定 global赋值前没有spam的绑定
+def scope_test():
+    def do_local():
+        spam = "local spam"
+
+    def do_nonlocal():
+        nonlocal spam
+        spam = "nonlocal spam"
+
+    def do_global():
+        global spam
+        spam = "global spam"
+
+    spam = "test spam"
+    do_local()
+    print("After local assignment:", spam)  # test spam
+    do_nonlocal()
+    print("After nonlocal assignment:", spam)  # nonlocal spam
+    do_global()
+    print("After global assignment:", spam)  # nonlocal spam 声明了全局变量, 但是print优先使用局部spam
+
+
+scope_test()
+print("In global scope:", spam)  # global spam
 
 
 # closure 闭包
