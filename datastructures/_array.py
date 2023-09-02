@@ -19,7 +19,3 @@ from random import random
 
 floats = array('d', (random() for _ in range(100)))
 print(floats[-5:])
-
-# fp = open('floats.txt', 'rb')
-# floats.tofile(fp)
-# floats.fromfile(fp, 100)

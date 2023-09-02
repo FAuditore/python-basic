@@ -93,4 +93,20 @@ from timeit import Timer
 # __init__(self, stmt="pass", setup="pass", timer=default_timer,globals=None)
 print(Timer('t=a; a=b; b=t', 'a=1; b=2').timeit())  # 0.016142499996931292
 print(Timer('a,b = b,a', 'a=1; b=2').timeit())  # 0.009712083003250882
-print(timeit.timeit('1+1', number=10000))  # 6.041699816705659e-05
+print(timeit.timeit('1+1', number=1000))  # 6.041699816705659e-05
+
+# 浮点运算
+# decimal模块提供了一种Decimal数据类型用于十进制浮点运算
+# 相比内置的float二进制浮点实现, 该类特别适用于
+#     财务应用和其他需要精确十进制表示的用途
+#     控制精度
+#     控制四舍五入以满足法律或监管要求
+#     跟踪有效小数位，或用户期望结果与手工完成的计算相匹配的应用程序
+from decimal import *
+
+print(round(Decimal('0.70') * Decimal('1.05'), 2))  # 0.74
+
+# Decimal 可以模拟手工运算来避免当二进制浮点数无法精确表示十进制数时会导致的问题。
+print(Decimal('1.00') % Decimal('.10'))  # 0.00
+print(1.00 % 0.10)  # 0.09999999999999995
+print(Decimal(1) / Decimal(7))  # 0.1428571428571428571428571429
