@@ -56,3 +56,45 @@ print(f'{n:d}')  # 10
 print(f'{n:x}')  # a
 print(f'{n:#x}')  # 0xa
 print(f'{n:#X}')  # 0xA
+
+# reprlib 用于缩略显示大型或嵌套容器
+import reprlib
+
+print(reprlib.repr(list(range(1000))))  # [0, 1, 2, 3, 4, 5, ...]
+
+# pprint 当输出结果过长而需要折行时，“美化输出机制”会添加换行符和缩进
+import pprint
+
+pprint.pprint([l, d, f], width=30)
+# [[1, 2, 3],
+# {'k': 'v'},
+# <function <lambda> at 0x102490540>]
+
+# textwrap 格式化文本段落 适应宽度
+import textwrap
+
+doc = """The wrap() method is just like fill() except that it returns
+a list of strings instead of one big string with newlines to separate
+the wrapped lines."""
+print(textwrap.fill(doc, width=40))
+# The wrap() method is just like fill()
+# except that it returns a list of strings
+# instead of one big string with newlines
+# to separate the wrapped lines.
+
+# locale 模块处理与特定地域文化相关的数据格式
+import locale
+
+locale.setlocale(locale.LC_ALL, 'zh_CN')
+conv = locale.localeconv()
+print(locale.format_string("%d", 1234567.8, grouping=True))  # 1,234,567
+print(locale.format_string("%s%.*f", (conv['currency_symbol'],
+                                      conv['frac_digits'], 1234567.8), grouping=True))  # ￥1,234,567.80
+
+# 模版
+# 占位符由$加上合法的Python标识符(只能包含字母、数字和下划线)构成
+# 一旦使用花括号将占位符括起来, 就可以在后面直接跟上更多的字母和数字而无需空格分割 $$将被转义成单个字符$
+from string import Template
+
+t = Template('${village}folk send $$10 to $cause.')
+print(t.safe_substitute(cause='the ditch fund'))  # ${village} folk send $10 to the ditch fund.
