@@ -36,7 +36,7 @@ print(d.setdefault('f', 100))  # 100 d->{'a': 1, 'b': 2, 'c': 4, 'f': 100}
 for k, v in d.items():
     pass
 
-for k in d.keys():
+for k in d.keys():  # keys()可省略 默认按key遍历
     pass
 
 for v in d.values():

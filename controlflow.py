@@ -17,9 +17,28 @@ print(list(range(0, 30, 5)))  # [0, 5, 10, 15, 20, 25]
 print(11 in range(0, 20, 2))  # False
 print(range(0, 20, 2)[-1])  # 18
 
-# for
+# for 循环
+# for语句会在容器对象上调用iter(), 该函数返回一个定义了__next__()方法的迭代器对象
 for s in seasons:
     print(s, end=',')  # Spring,Summer,Fall,Winter,
+
+
+# yield
+# 用于创建迭代器的生成器
+# 当要返回数据时使用yield语句,
+# 每次在生成器上调用next()时, 它会从上次离开的位置恢复执行(它会记住上次执行语句时的所有数据值)
+def get_number():
+    yield 1
+    yield 2
+    yield 10
+
+
+for number in get_number():
+    print(number, end=' ')  # 1 2 10
+
+# (expr) 生成器表达式
+# 语法类似列表推导, 外层为圆括号
+print(sum(i * i for i in range(10)))  # 285
 
 # enumerate(iterable, start=0)
 # 返回一个枚举对象
