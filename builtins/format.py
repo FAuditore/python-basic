@@ -57,6 +57,12 @@ print(f'{n:x}')  # a
 print(f'{n:#x}')  # 0xa
 print(f'{n:#X}')  # 0xA
 
+# 通过%格式化
+print("%d to hex is %x" % (n, n))  # 10 to hex is a
+print("%d to hex is %X" % (n, n))  # 10 to hex is A
+print("%d to hex is %#x" % (n, n))  # 10 to hex is 0xa
+print("%d to hex is %#X" % (n, n))  # 10 to hex is 0XA
+
 # reprlib 用于缩略显示大型或嵌套容器
 import reprlib
 
