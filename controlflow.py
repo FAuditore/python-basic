@@ -51,7 +51,7 @@ for number in get_number():
 # get 1 1
 # get 2 2
 # get 10 10
-# over 最后一次调用next,运行最后的所有代码, 然后抛出StopIteration异常
+# over 最后一次调用next, 运行最后的所有代码, 然后抛出StopIteration异常
 
 # (expr) 生成器表达式
 # 语法类似列表推导, 外层为圆括号

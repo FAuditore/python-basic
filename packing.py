@@ -1,6 +1,5 @@
-from datastructures.list import ranks, suits
-
-
+# *args: 无关键字参数 绑定到元组
+# **kwargs: 关键字参数 绑定到字典
 def f_args(name, *args, **kwargs):
     print('name = ' + str(name))
     print('type = ', type(args), 'args =', args)  # tuple
@@ -19,14 +18,16 @@ print(a, b, c)  # 0 [1, 2, 3] 4
 # generator expression 生成器表达式
 # (expr)
 # 不会一次性产生含所有值的列表,仅在需要时生成新元素,节省内存
-for c in ('%s %s' % (r, s) for r in ranks for s in suits if r < '3'):
+for c in ('%s %s' % (r, s) for r in range(1, 10) for s in 'spades diamonds clubs hearts'.split() if r < 3):
     print(c)
+# 1 spades
+# 1 diamonds
+# 1 clubs
+# 1 hearts
 # 2 spades
 # 2 diamonds
 # 2 clubs
 # 2 hearts
-# 10 spades
-# ...
 
 generList = list(i ** 2 for i in range(5))
 # [0, 1, 4, 9, 16]

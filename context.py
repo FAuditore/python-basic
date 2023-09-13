@@ -1,7 +1,7 @@
 # with
 # 上下文管理器协议包含 __enter__ 和 __exit__ 两个方法
 # with语句开始运行时, 会在上下文管理器对象上调用 __enter__ 方法
-# with语句将会绑定这个方法的返回值到 as 子句中指定的目标，如果有的话。
+# with语句将会绑定这个方法的返回值到 as 子句中指定的目标, 如果有的话
 # with语句运行结束后, 会在上下文管理器对象上调用 __exit__ 方法, 以此扮演 finally 子句的角色
 
 # 执行 with 后面的表达式得到的结果是上下文管理器对象
@@ -74,3 +74,7 @@ with looking_glass() as w:
     print(123 / 0)  # 321
     print(w == 'abc')  # eurT
 print('abcdefg')  # abcdefg
+
+# contextlib.suppress(Exception) 忽略指定异常
+with contextlib.suppress(ZeroDivisionError):
+    print(1 / 0)

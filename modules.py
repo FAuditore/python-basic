@@ -1,7 +1,7 @@
 # 模块包含可执行语句及函数定义 这些语句用于初始化模块, 且仅在import语句第一次遇到模块名时执行
 # 模块搜索路径:
 #     被命令行直接运行的脚本所在的目录（或未指定文件时的当前目录）
-#     PYTHONPATH （目录列表，与 shell 变量 PATH 的语法一样）
+#     PYTHONPATH （目录列表, 与 shell 变量 PATH 的语法一样）
 #     依赖于安装的默认值（按照惯例包括一个 site-packages 目录, 由 site 模块处理）
 import builtins
 
@@ -43,7 +43,7 @@ print(dir(builtins))  # ['ArithmeticError', 'AssertionError',...,'type', 'vars',
 
 # 为了快速加载, Python把模块的编译版本缓存在 __pycache__ 目录中,文件名为 [module].[version].pyc
 # __pycache__/func.cpython-311.pyc
-# 从 .pyc 文件读取的程序不比从 .py 读取的执行速度快，.pyc文件只是加载速度更快。
+# 从 .pyc 文件读取的程序不比从 .py 读取的执行速度快, .pyc文件只是加载速度更快
 
 # Python 命令中使用 -O 或 -OO 开关, 可以减小编译模块的大小
 # -O 去除断言语句, -OO 去除断言语句和 __doc__ 字符串

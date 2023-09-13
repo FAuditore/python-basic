@@ -135,7 +135,7 @@ print(d)  # {'a': 1, 'b': 2, 'c': 5}
 # __init__和update时忽略了覆盖的__setitem__ 没有在子类中搜索该方法
 
 # 内置类型的原生方法使用 C 语言实现, 不会调用子类中覆盖的方法, 不过有极少数例外
-# 因此，需要定制 list, dict 或 str 类型时, 子类化 UserList, UserDict 或 UserString 更简单
+# 因此, 需要定制 list, dict 或 str 类型时, 子类化 UserList, UserDict 或 UserString 更简单
 class MyDictV2(UserDict):
     def __setitem__(self, key, value):
         print('no set')
@@ -163,7 +163,7 @@ class Daughter(Father):
 class Dog(Son, Daughter):
 
     def daughter_pong(self):
-        # 通过类调用实例方法,必须显式传入self参数,因为这样访问的是未绑定方法(unbound method)。
+        # 通过类调用实例方法,必须显式传入self参数,因为这样访问的是未绑定方法(unbound method)
         Daughter.pong(self)
 
 

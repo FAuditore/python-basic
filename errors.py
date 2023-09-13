@@ -1,4 +1,4 @@
-# 错误分为句法错误和异常。
+# 错误分为句法错误和异常
 
 # 语法错误
 # while True print('Hello world')
@@ -13,12 +13,35 @@
 #   File "<stdin>", line 1, in <module>
 # ZeroDivisionError: division by zero
 
+"""
+    BaseException
+        ├── SystemExit
+        ├── KeyboardInterrupt
+        ├── GeneratorExit
+        └── Exception
+             ├── StopIteration
+             ├── ArithmeticError
+             │      ├── FloatingPointError
+             │      ├── OverflowError
+             │      └── ZeroDivisionError
+             ├── AssertionError
+             ├── AttributeError
+             ├── BufferError
+             ├── EOFError
+             ├── ImportError
+             ├── LookupError
+             │      ├── IndexError
+             │      └── KeyError
+             ├── MemoryError
+             ... etc.
+"""
+
 # try
 # 首先执行try子句, 如果没有触发异常, 则跳过except子句
 # 如果在执行try子句时发生了异常, 则跳过该子句中剩下的部分
 # 如果异常的类型与except关键字后指定的异常相匹配, 则会执行except子句, 然后跳到try/except代码块之后继续执行
 # 如果发生的异常与except子句中指定的异常不匹配, 则它会被传递到外部的try语句中；
-# 如果没有找到处理程序，则它是一个未处理异常且执行将终止
+# 如果没有找到处理程序, 则它是一个未处理异常且执行将终止
 
 try:
     x = int(input('input a number:'))
@@ -28,7 +51,7 @@ except ValueError as v:
     print(v.args)  # ("invalid literal for int() with base 10: 'a'",)
 except (RuntimeError, TypeError):
     pass
-except Exception as err:  # Exception 可以被用作通配符，捕获（几乎）一切
+except Exception as err:  # Exception 可以被用作通配符, 捕获（几乎）一切
     print(f"Unexpected {err=}, {type(err)=}")
     # raise 语句支持强制触发指定的异常 raise的参数就是要触发的异常
     # 为了表明一个异常是另一个异常的直接后果, raise语句允许一个可选的from子句
@@ -54,4 +77,3 @@ def bool_return():
 
 
 print(bool_return())  # False
-

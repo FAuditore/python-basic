@@ -6,7 +6,7 @@ import timeit
 os.system('ls')
 
 # 高阶文件操作 主要是文件拷贝和删除
-# shutil.rmtree(): 删除目录和它里面的所有内容。
+# shutil.rmtree(): 删除目录和它里面的所有内容
 # shutil.copytree(): 复制整个目录树
 import shutil
 
@@ -17,7 +17,7 @@ os.remove('a.py')
 # 文件通配符 使用通配符搜索创建文件列表
 import glob
 
-# *匹配任意数量的字符，?匹配单个字符，[a-z]匹配范围内的字
+# *匹配任意数量的字符, ?匹配单个字符, [a-z]匹配范围内的字
 print(glob.glob('s*.py'))  # ['_string.py', 'stdlib.py']
 
 # 命令行参数
@@ -101,12 +101,12 @@ print(timeit.timeit('1+1', number=1000))  # 6.041699816705659e-05
 #     财务应用和其他需要精确十进制表示的用途
 #     控制精度
 #     控制四舍五入以满足法律或监管要求
-#     跟踪有效小数位，或用户期望结果与手工完成的计算相匹配的应用程序
+#     跟踪有效小数位, 或用户期望结果与手工完成的计算相匹配的应用程序
 from decimal import *
 
 print(round(Decimal('0.70') * Decimal('1.05'), 2))  # 0.74
 
-# Decimal 可以模拟手工运算来避免当二进制浮点数无法精确表示十进制数时会导致的问题。
+# Decimal 可以模拟手工运算来避免当二进制浮点数无法精确表示十进制数时会导致的问题
 print(Decimal('1.00') % Decimal('.10'))  # 0.00
 print(1.00 % 0.10)  # 0.09999999999999995
 print(Decimal(1) / Decimal(7))  # 0.1428571428571428571428571429

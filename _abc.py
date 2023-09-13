@@ -59,7 +59,7 @@ class Slot(Lottery):
         return len(self._items)
 
 
-# class collections.abc.Sized 提供了 __len__() 方法的抽象基类。
+# class collections.abc.Sized 提供了 __len__() 方法的抽象基类
 # https://docs.python.org/zh-cn/3.11/library/collections.abc.html
 from collections.abc import Sized
 

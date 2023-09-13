@@ -22,7 +22,7 @@ class Sentence:
         return len(self.words)
 
     def __repr__(self):
-        # 默认情况下，reprlib.repr 函数生成的字符串最多有 30 个字符
+        # 默认情况下, reprlib.repr 函数生成的字符串最多有 30 个字符
         return 'Sentence(%s)' % reprlib.repr(self.text)
 
 
@@ -199,7 +199,7 @@ print(list(itertools.starmap(operator.mul, enumerate(s, 1))))
 print(list(zip('abc', [1, 2, 3])))  # [('a', 1), ('b', 2), ('c', 3)]
 
 # itertools.zip_longest(it1, ..., itN, fillvalue=None)与zip类似
-# 等到最长的可迭代对象到头后才停止，空缺的值使用 fillvalue 填充
+# 等到最长的可迭代对象到头后才停止, 空缺的值使用 fillvalue 填充
 print(list(itertools.zip_longest('abcd', [1, 2], fillvalue='?')))  # [('a', 1), ('b', 2), ('c', '?'), ('d', '?')]
 
 # itertools.chain(it1, ..., itN)先产出 it1 中的所有元素, 然后产出 it2 中的所有元素, 以此类推

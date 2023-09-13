@@ -16,7 +16,9 @@ import time
 def ExecTime(func):
     fmt = 'elapse: {:.6f}s func: {}({})'
 
-    @functools.wraps(func)  # functools.wraps(func) 把相关属性复制到timer中, 抵消装饰器的副作用: 防止函数名等被timer覆盖
+    # functools.wraps(func)
+    # 把相关属性复制到timer中, 抵消装饰器的副作用: 防止函数名等被timer覆盖
+    @functools.wraps(func)
     def timer(*args, **kwargs):
         t0 = time.perf_counter()
         result = func(*args, **kwargs)

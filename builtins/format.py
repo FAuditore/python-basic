@@ -68,7 +68,7 @@ import reprlib
 
 print(reprlib.repr(list(range(1000))))  # [0, 1, 2, 3, 4, 5, ...]
 
-# pprint 当输出结果过长而需要折行时，“美化输出机制”会添加换行符和缩进
+# pprint 当输出结果过长而需要折行时, “美化输出机制”会添加换行符和缩进
 import pprint
 
 pprint.pprint([l, d, f], width=30)

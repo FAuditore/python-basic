@@ -35,15 +35,14 @@ def f_default(age, name='abc'):
 def f_keyword_only(*, a, b):
     """
         可变参数后仅能使用关键字参数(无默认值则不可省略)
-        应在参数列表中第一个仅限关键字形参前添加*。
+        应在参数列表中第一个仅限关键字形参前添加*
     """
-    pass
 
 
 def f_pos_only(a, b, /, *args):
     """
         仅限位置参数, 放在/前,不能用关键字传递
-        如果函数定义中没有 /，则表示没有仅限位置形参。
+        如果函数定义中没有 /, 则表示没有仅限位置形参
     """
 
 
@@ -87,7 +86,7 @@ new_div = functools.partial(my_div, 100)
 print(list(map(new_div, range(1, 5))))  # [100.0, 50.0, 33.333333333333336, 25.0]
 
 # zip(iterable, ..., strict:bool)
-# 在多个迭代器上并行迭代，从每个迭代器返回一个数据项组成元组
+# 在多个迭代器上并行迭代, 从每个迭代器返回一个数据项组成元组
 # zip(range(3), 'abcdef', strict=True))  # ValueError: zip() argument 2 is longer than argument 1
 print(list(zip(range(3), 'abcdef')))  # [(0, 'a'), (1, 'b'), (2, 'c')]
 

@@ -14,26 +14,3 @@ class MyTest(unittest.TestCase):
 
 if __name__ == '__main__':
     res = unittest.main(verbosity=3, exit=False)
-
-"""
-    BaseException
-        ├── SystemExit
-        ├── KeyboardInterrupt
-        ├── GeneratorExit
-        └── Exception
-             ├── StopIteration
-             ├── ArithmeticError
-             │      ├── FloatingPointError
-             │      ├── OverflowError
-             │      └── ZeroDivisionError
-             ├── AssertionError
-             ├── AttributeError
-             ├── BufferError
-             ├── EOFError
-             ├── ImportError
-             ├── LookupError 
-             │      ├── IndexError 
-             │      └── KeyError 
-             ├── MemoryError
-             ... etc.
-"""
