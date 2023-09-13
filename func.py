@@ -1,4 +1,4 @@
-from functools import reduce, partial
+import functools
 
 __all__ = ["my_sum", "my_div"]
 
@@ -72,18 +72,18 @@ def fact(n):
 # sum(*args, **kwargs) 对迭代器求和
 sum(map(fact, filter(lambda n: n % 2, range(0, 10))))  # fact(1)+fact(3)+fact(5)+fact(7)+fact(9)
 
-# all(iterable) 迭代器全为真返回True 空集返回True
-# any(iterable) 迭代器任一为真返回True 空集返回False
+# all(iterable) 迭代器全为真返回True 空集返回True 短路
+# any(iterable) 迭代器任一为真返回True 空集返回False 短路
 print(all([True, 1, 'a', 0]))  # False
 print(any([True, 1, 'a', 0]))  # True
 
 # functools.reduce(function, iterable[, initial])
 # 将函数作用到序列上
-reduce(lambda x, y: x + y, range(0, 100))  # ((...(0+1)+2)+3)...+99)
+functools.reduce(lambda x, y: x + y, range(0, 100))  # ((...(0+1)+2)+3)...+99)
 
 # partial(func, /, *args, **keywords)
 # 固定函数某些参数
-new_div = partial(my_div, 100)
+new_div = functools.partial(my_div, 100)
 print(list(map(new_div, range(1, 5))))  # [100.0, 50.0, 33.333333333333336, 25.0]
 
 # zip(iterable, ..., strict:bool)

@@ -24,17 +24,27 @@ for s in seasons:
 
 
 # yield
-# 用于创建迭代器的生成器
-# 当要返回数据时使用yield语句,
+# Python函数定义体中有yield关键字, 该函数就是生成器函数
+# 调用该函数会返回一个生成器对象
 # 每次在生成器上调用next()时, 它会从上次离开的位置恢复执行(它会记住上次执行语句时的所有数据值)
 def get_number():
+    print('get 1', end=' ')
     yield 1
+    print('get 2', end=' ')
     yield 2
+    print('get 10', end=' ')
     yield 10
+    print('over')
 
+
+print(type(get_number()))  # <class 'generator'>
 
 for number in get_number():
-    print(number, end=' ')  # 1 2 10
+    print(number)
+# get 1 1
+# get 2 2
+# get 10 10
+# over 最后一次调用next,运行最后的所有代码, 然后抛出StopIteration异常
 
 # (expr) 生成器表达式
 # 语法类似列表推导, 外层为圆括号
