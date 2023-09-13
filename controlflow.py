@@ -17,10 +17,17 @@ print(list(range(0, 30, 5)))  # [0, 5, 10, 15, 20, 25]
 print(11 in range(0, 20, 2))  # False
 print(range(0, 20, 2)[-1])  # 18
 
-# for 循环
-# for语句会在容器对象上调用iter(), 该函数返回一个定义了__next__()方法的迭代器对象
-for s in seasons:
-    print(s, end=',')  # Spring,Summer,Fall,Winter,
+# loop
+# for 或 while 循环可以包括 else 子句
+# 在 for 循环中, else 子句会在循环成功结束最后一次迭代之后执行
+# 在 while 循环中, 它会在循环条件变为假值后执行
+# break 提前终止循环, 不会执行else
+for n in range(2, 10):
+    if n % 11 == 0:
+        print('found')
+        break
+else:
+    print('over')
 
 
 # yield
@@ -55,18 +62,6 @@ print(sum(i * i for i in range(10)))  # 285
 # iterable必须是一个序列,或 iterator, 或其他支持迭代的对象
 # enumerate()返回的迭代器的 __next__()方法返回一个元组, 里面包含一个计数值和通过迭代 iterable 获得的值
 print(list(enumerate(seasons, start=5)))  # [(5, 'Spring'), (6, 'Summer'), (7, 'Fall'), (8, 'Winter')]
-
-# loop
-# for 或 while 循环可以包括 else 子句
-# 在 for 循环中, else 子句会在循环成功结束最后一次迭代之后执行
-# 在 while 循环中, 它会在循环条件变为假值后执行
-# break 提前终止循环, 不会执行else
-for n in range(2, 10):
-    if n % 11 == 0:
-        print('found')
-        break
-else:
-    print('over')
 
 
 # pass
