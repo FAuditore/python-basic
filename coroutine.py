@@ -75,7 +75,6 @@ print(next(a))  # 3
 # 显式把异常发给协程
 # 如果生成器处理了抛出的异常,  代码会向前执行到下一个 yield 表达式, 而产出的值会成为调用 generator.throw 方法得到的返回值
 # 如果生成器没有处理抛出的异常, 异常会向上冒泡, 传到调用方的上下文中
-# 如果协程有return语句返回值, 生成器对象会抛出StopIteration异常, 异常对象的value属性保存着返回的值
 
 class MyExc(Exception): ...
 
@@ -91,6 +90,7 @@ def exc_handling():
                 print('received x: {!r}'.format(x))
     finally:
         print('coroutine ending')
+        return 99999
 
 
 e = exc_handling()
@@ -106,3 +106,58 @@ e.throw(MyExc)  # MyExc handled, continuing...
 # 致使生成器在暂停的 yield 表达式处抛出 GeneratorExit 异常
 e.close()  # coroutine ending
 print(inspect.getgeneratorstate(e))  # GEN_CLOSED
+
+
+# 如果协程有return语句返回值, 生成器抛出StopIteration异常, 异常对象的value属性保存着返回的值
+def return_coroutine():
+    x = yield
+    return x + 1
+
+
+r = return_coroutine()
+try:
+    next(r)
+    r.send(123)
+except StopIteration as e:
+    print(e.value)  # 124
+
+
+# 委派生成器 yield from
+
+# 子生成器, 收到空时退出
+def coroutine_worker():
+    ans = 0
+    while True:
+        x = yield
+        if not x:
+            break
+        ans += x
+    return ans
+
+
+# 一个委派生成器使用yield from调用一个子生成器
+# 子生成器可以执行 return 语句, 返回一个值, 而返回的值会成为 yield from 表达式的值
+def appoint(result):
+    while True:
+        # 每次循环新建一个worker实例,发送的每个值都会由yield from处理,传给该实例
+        ans = yield from coroutine_worker()
+        result.append(ans)
+
+
+# 任何yield from链条都必须由客户驱动, 在最外层委派生成器上调用next(...)函数或.send(...)方法
+# 可以隐式调用, 例如使用 for 循环
+def client():
+    l = []
+    a = appoint(l)
+    next(a)
+    # 会直接把值传给子生成器
+    a.send(1)
+    a.send(3)
+    a.send(None)
+    a.send(5)
+    a.send(5)
+    a.send(None)
+    print(l)
+
+
+client()  # [4,10]
