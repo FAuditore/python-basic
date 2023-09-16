@@ -48,6 +48,8 @@ def scope_test():
         spam = "local spam"
 
     def do_nonlocal():
+        # nonlocal 关键字定义在闭包里
+        # 非局部声明变量指代的已有标识符是最近外面函数的已声明变量, 但是不包括全局变量
         nonlocal spam
         spam = "nonlocal spam"
 
