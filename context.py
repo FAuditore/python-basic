@@ -78,3 +78,7 @@ print('abcdefg')  # abcdefg
 # contextlib.suppress(Exception) 忽略指定异常
 with contextlib.suppress(ZeroDivisionError):
     print(1 / 0)
+
+# Python3.10 带括号的上下文管理器, 可以组合多个上下文管理器
+with (open('file1.txt'), open('file2.txt')) as (f1, f2):
+    pass

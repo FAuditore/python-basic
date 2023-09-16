@@ -64,3 +64,11 @@ print(c)  # Counter({'l': 3, 'o': 2, 'h': 1, 'e': 1, ' ': 1, 'w': 1, 'r': 1, 'd'
 print(c.most_common(3))  # [('l', 3), ('o', 2), ('h', 1)]
 print(sorted(c))  # [' ', 'd', 'e', 'h', 'l', 'o', 'r', 'w'] 展示所有不重复元素 等价于sorted(set('hello world'))
 print(c['o'])  # 2
+
+# Python3.9字典合并(|)和更新(|=)运算符
+print(d1 := dict(zip('abc', [1, 2, 3])))  # {'a': 1, 'b': 2, 'c': 3}
+print(d2 := dict(zip('cde', [3, 4, 5])))  # {'c': 3, 'd': 4, 'e': 5}
+print(d1 | d2)  # {'a': 1, 'b': 2, 'c': 3, 'd': 4, 'e': 5}
+d2['c'] = 100
+d1 |= d2
+print(d1)  # {'a': 1, 'b': 2, 'c': 100, 'd': 4, 'e': 5}

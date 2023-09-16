@@ -147,8 +147,7 @@ def appoint(result):
 # 任何yield from链条都必须由客户驱动, 在最外层委派生成器上调用next(...)函数或.send(...)方法
 # 可以隐式调用, 例如使用 for 循环
 def client():
-    l = []
-    a = appoint(l)
+    a = appoint(l := [])
     next(a)
     # 会直接把值传给子生成器
     a.send(1)

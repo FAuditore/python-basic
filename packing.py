@@ -31,3 +31,7 @@ for c in ('%s %s' % (r, s) for r in range(1, 10) for s in 'spades diamonds clubs
 
 generList = list(i ** 2 for i in range(5))
 # [0, 1, 4, 9, 16]
+
+# Python3.8 海象操作符 表达式同时赋值
+print(n := list(range(5)))  # [0, 1, 4, 9, 16]
+print(n)  # [0, 1, 2, 3, 4]
