@@ -26,8 +26,8 @@ import sys, argparse
 # >python stdlib.py -l 5 main.py
 print(sys.argv)  # ['stdlib.py', '-l', '5', 'main.py']
 parser = argparse.ArgumentParser(
-    prog='stdlib',
-    description='Show top lines from each file'
+        prog='stdlib',
+        description='Show top lines from each file'
 )
 parser.add_argument('filenames', nargs='+')
 parser.add_argument('-l', '--lines', type=int, default=10)
@@ -74,7 +74,7 @@ from datetime import date
 now = date.today()
 print(now)  # 2023-09-02
 print(now.strftime(
-    '%m-%d-%y. %d %b %Y is a %A on the %d day of %B.'))
+        '%m-%d-%y. %d %b %Y is a %A on the %d day of %B.'))
 # 09-02-23. 02 Sep 2023 is a Saturday on the 02 day of September.
 
 print(now - date(1970, 1, 1))  # 19602 days 0:00:00

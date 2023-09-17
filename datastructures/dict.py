@@ -5,7 +5,7 @@
 #     如果两个可散列对象相等,那么它们散列值相同
 #     即 x == y 同时意味着 x is y 且 hash(x) == hash(y)
 #     元组所有元素都可散列时元组才可散列
-from collections import defaultdict, UserDict, Counter
+from collections import Counter, UserDict, defaultdict
 
 a = dict(one=1, two=2, three=3)
 b = {'one': 1, 'two': 2, 'three': 3}

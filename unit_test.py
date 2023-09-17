@@ -1,5 +1,6 @@
 import unittest
-from func import my_sum, my_div
+
+from func import my_div, my_sum
 
 
 class MyTest(unittest.TestCase):

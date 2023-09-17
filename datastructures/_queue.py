@@ -1,5 +1,5 @@
 from collections import deque
-from queue import Queue, LifoQueue, PriorityQueue
+from queue import LifoQueue, PriorityQueue, Queue
 
 # Queue, LifoQueue, PriorityQueue
 q = Queue(maxsize=10)

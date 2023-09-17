@@ -1,7 +1,6 @@
 import contextlib
 import functools
 import inspect
-import time
 
 
 def simple_coroutine():

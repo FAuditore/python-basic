@@ -136,4 +136,3 @@ def decorator_factory(param='param'):  # 装饰器工厂,根据参数返回一�
 def origin_func2():
     pass
 # test factory origin_func2
-

@@ -1,4 +1,4 @@
-from operator import itemgetter, attrgetter
+from operator import attrgetter, itemgetter
 
 students = [
     ('bef', 1),
