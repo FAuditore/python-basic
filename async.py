@@ -111,7 +111,7 @@ async def concurrent():
     # 保护一个可等待对象防止其被取消
     # task = asyncio.create_task(something())
     # res = await shield(task)
-    # 等价于 await something() 不同之处在于不会被取消
+    # 等价于 await something() 不同之处在于shield不会被取消
     res = await asyncio.shield(L)
     print(res)
 
