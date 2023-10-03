@@ -60,7 +60,7 @@ def do_many():
 
         # map 类似于 map(func, *iterables) 函数
         # iterables 是立即执行而不是延迟执行的
-        # func 是异步执行的，对 func 的多个调用可以并发执行
+        # func 是异步执行的, 对 func 的多个调用可以并发执行
         # 迭代器的 __next__ 方 法调用各个 future 的 result 方法
         # 返回结果的顺序与调用顺序一致
         res = executor.map(long_time_job, reversed(list(range(5))))
@@ -138,7 +138,7 @@ def future_object():
 
     # result(timeout=None)返回调用所返回的值
     # 如果调用尚未完成则此方法将等待至多timeout秒
-    # 如果调用在 timeout 秒内仍未完成，则将引发TimeoutError
+    # 如果调用在 timeout 秒内仍未完成, 则将引发TimeoutError
     with contextlib.suppress(TimeoutError):
         print(future.result(timeout=0.5))
 

@@ -5,7 +5,7 @@
 #     通过队列 实现分布式任务
 #     同步 并发代码
 # 还有一些 低层级 API 以支持库和框架的开发者实现
-#     创建和管理事件循环，以提供异步 API 用于网络化, 运行子进程，处理OS信号等等
+#     创建和管理事件循环, 以提供异步 API 用于网络化, 运行子进程, 处理OS信号等等
 #     使用 transports 实现高效率协议
 #     通过 async/await 语法桥接基于回调的库和代码
 
@@ -52,14 +52,14 @@ async def create_task():
     task1 = asyncio.create_task(hello(1))
     task2 = asyncio.create_task(hello(2))
 
-    # 重要 保存一个指向此函数的结果的引用，以避免任务在执行过程中消失
+    # 重要 保存一个指向此函数的结果的引用, 以避免任务在执行过程中消失
     # 事件循环将只保留对任务的弱引用
-    # 未在其他地方被引用的任务可能在任何时候被作为垃圾回收，即使是在它被完成之前
-    # 如果需要可靠的“发射后不用管”后台任务，请将它们放到一个多项集中
+    # 未在其他地方被引用的任务可能在任何时候被作为垃圾回收, 即使是在它被完成之前
+    # 如果需要可靠的“发射后不用管”后台任务, 请将它们放到一个多项集中
     task_set = {task1, task2}
 
     # add_done_callback(callback, *, context=None)
-    # 添加一个回调，将在Task对象完成时被运行
+    # 添加一个回调, 将在Task对象完成时被运行
     # 完成后移除 callback第一个传入参数是task本身
     task1.add_done_callback(task_set.discard)
     task2.add_done_callback(task_set.discard)
@@ -97,9 +97,9 @@ async def task_group():
 
 async def concurrent():
     # awaitable asyncio.gather(*aws, return_exceptions=False)
-    # 并发运行 aws 序列中的可等待对象,返回一个由返回值聚合成的列表，结果顺序一致
+    # 并发运行 aws 序列中的可等待对象,返回一个由返回值聚合成的列表, 结果顺序一致
     # return_exceptions False:首个异常会立即传播给等待 gather() 的任务 其他任务继续
-    # return_exceptions True:异常和成功结果一样处理，合并至结果列表
+    # return_exceptions True:异常和成功结果一样处理, 合并至结果列表
     L = asyncio.gather(
             hello(1),
             hello(2),
@@ -127,7 +127,7 @@ async def timeout():
         async with asyncio.timeout(1):
             await hello()
         # asyncio.wait_for(aw, timeout)
-        # 等待aw可等待对象完成，指定 timeout 秒数后超时
+        # 等待aw可等待对象完成, 指定 timeout 秒数后超时
         await asyncio.wait_for(hello(999), 1)
     except TimeoutError:
         print("The long operation timed out, but we've handled it.")
