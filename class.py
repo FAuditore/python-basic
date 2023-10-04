@@ -102,7 +102,7 @@ print(e.__dict__)  # {'name': 'byd', 'model': 'han', 'battery': 'kylin', '_ECar_
 class Student:
     # slots 规约类的所有属性, 值为一个可迭代的字符串对象
     # 实例不能使用 __slots__ 中所列名称之外的其他属性
-    # 不再使用 __dict__ 字典保存所有属性, 使用定长列表分配, 节省内存, 加快访问属性速度
+    # 不再创建__dict__和__weakref__属性, 可以节省内存, 加快访问属性速度
     # 子类不会继承 __slots__ 属性, 如果需要作为弱引用的对象, 需要在 __slots__ 中加入 '__weakref__'
     __slots__ = ('id', 'name')
 
@@ -188,3 +188,17 @@ def print_mro(cls):
 
 print_mro(bool)  # bool int object
 print_mro(numbers.Complex)  # Complex Number object
+
+
+# 特殊方法会保存在对象的类型中而不是实例中
+class C:
+    pass
+
+
+a = C()
+# print(len(a))  # TypeError: object of type 'C' has no len()
+a.__len__ = lambda: 5
+# print(len(a))  # TypeError: object of type 'C' has no len()
+
+C.__len__ = lambda x: 5
+print(len(a))  # 5

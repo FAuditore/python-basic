@@ -16,7 +16,7 @@ class A:
         self.data = dict(d)
 
     # 构造方法 __new__(cls)
-    # 该类方法返回一个实例, 作为第一个参数传递给__init__(self)
+    # 创建一个cls类的实例, 返回调用者之前调用__init__ 参数相同
     # 可以用来实现单例模式
     def __new__(cls, *args):
         if len(args) == 1 and isinstance(args[0], abc.Mapping):

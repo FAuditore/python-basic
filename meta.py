@@ -78,7 +78,11 @@ class Item(Entity):
 
 for name in Item.__dict__.items():
     print(name)
+
+
 # ('abc', 123)
 # ('__module__', '__main__')
 # ('__init__', <function Item.__init__ at 0x104fe2ac0>)
 # ('__doc__', None)
+
+
