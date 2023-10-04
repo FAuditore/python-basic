@@ -2,6 +2,12 @@
 print('doesn\'t')  # doesn't
 print("doesn't")  # doesn't
 
+# Python没有char类型, 而是将字符串中的每个码位表示为一个长度为 1 的字符串对象
+# 内置函数 ord() 可将一个码位由字符串形式转换为取值范围在 0 - 10FFFF 之内的整数
+# chr() 可将一个取值范围在 0 - 10FFFF 之内的整数转换为长度为 1 的对应字符串对象
+print(ord('abc'[-1]))  # 99
+print(chr(97))  # a
+
 # 原始字符串
 print(r'a\b\c')  # a\b\c
 

@@ -1,4 +1,3 @@
-#
 # https://docs.python.org/3/reference/datamodel.html
 # 每个对象都有各自的标识号、类型和值
 # 一个对象被创建后, 它的标识号就绝不会改变
