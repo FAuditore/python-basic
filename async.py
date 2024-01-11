@@ -122,7 +122,7 @@ async def concurrent():
 async def timeout():
     try:
         # asyncio.timeout(delay)
-        # 返回一个可被用于限制等待某个操作所耗费时间的异步上下文管理器。
+        # 返回一个可被用于限制等待某个操作所耗费时间的异步上下文管理器
         # asyncio.timeout_at(when) when 是停止等待的绝对时间
         async with asyncio.timeout(1):
             await hello()
@@ -151,7 +151,7 @@ async def simple_wait():
     # wait_for=<Future pending cb=[Task.task_wakeup()]>>}
 
     # asyncio.as_completed(aws, *, timeout=None)
-    # 并发地运行可迭代对象 aws 中的可等待对象。
+    # 并发地运行可迭代对象 aws 中的可等待对象
     # 返回一个产生协程的迭代器, 所返回的每个协程可被等待以从剩余的可等待对象的可迭代对象中获得早最的下一个结果
     for coro in asyncio.as_completed([task1, task2]):
         res = await coro

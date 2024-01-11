@@ -5,7 +5,7 @@
 # 接下来依次查找 type(a) 的方法解析顺序（MRO）
 # 如果找到的值是定义了某个描述器方法的对象, 则 Python 可能会重写默认行为并转而发起调用描述器方法
 # 通过实例调用
-#     实例查找通过命名空间链进行扫描，数据描述器的优先级最高，其次是实例变量、非数据描述器、类变量
+#     实例查找通过命名空间链进行扫描, 数据描述器的优先级最高, 其次是实例变量、非数据描述器、类变量
 #     最后是 __getattr__() （如果存在的话）
 # 通过类调用
 #     像 A.x 这样的点操作符查找的逻辑在 type.__getattribute__() 中
@@ -37,7 +37,7 @@ class NonNegative:
             # instance.__dict__[self.storage_name] = value
             setattr(instance, self.storage_name, value)
 
-    # 如果 a.x 找到了一个描述符，那么将通过 desc.__get__(a, type(a))
+    # 如果 a.x 找到了一个描述符, 那么将通过 desc.__get__(a, type(a))
     # 数据描述符始终会覆盖实例字典
     # 仅定义了__get__方法的描述符称为非数据描述符 非数据描述符会被实例字典覆盖(字典优先)
     # self是描述符实例, instance是托管实例, owner是托管类

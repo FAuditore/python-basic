@@ -50,7 +50,7 @@ print(rex)  # Dog(name='Rex', weight=30, owner='Bob')
 
 
 class EntityMeta(type):
-    """元类，用于创建带有验证字段的业务实体"""
+    """元类 用于创建带有验证字段的业务实体"""
 
     # __prepare__方法
     # __prepare__方法要求使用@classmethod装饰器定义并且该方法会在__new__之前被调用
