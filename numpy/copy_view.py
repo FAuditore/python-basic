@@ -9,13 +9,19 @@ print(a, b is a)  # [1 5 3] True
 c = a.view()
 print(c is a)  # False
 print(c.base is a)  # True
+c[1] = 9
+print(a)  # [1 9 3]
 
 # 切片返回视图
 d = a[...]
 print(d is a)  # False
 print(d.base is a)  # True
+d[1] = 99
+print(a)  # [ 1 99  3]
 
 # 深拷贝 深拷贝可以防止原数组不被回收内存泄漏
 e = a.copy()
 print(e is a)  # False
 print(e.base is a)  # False
+e[1] = 999
+print(a)  # [ 1 99  3]
