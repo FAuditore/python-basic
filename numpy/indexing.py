@@ -2,10 +2,12 @@ import numpy as np
 
 a = np.arange(5) ** 2
 print(a)  # [ 0  1  4  9 16]
+print(a[-1:1:-1])  # [16  9  4]
 
 # 使用数组索引
+# 返回的是view,不是深拷贝,指向相同内存中的数据
 print(a[[0, 2, 3, 0]])  # [0 4 9 0]
-a[[0, 2]] = (10, 11)
+a[[0, 2]] = 10, 11  # [10 1 11 9 16]
 print(a[np.arange(0, 4)])  # [10  1 11  9]
 print(a[np.arange(0, 4).reshape(2, 2)])  # [[10  1] [11  9]]
 
@@ -28,17 +30,55 @@ print(b[:, -1])  # [ 3 13 23 33 43]
 print(b[-1])  # [40 41 42 43] -->b[-1,:] 缺失的轴默认为完整的切片
 print(b[1:2, ...])  # [[10 11 12 13]] --> b[1:2, :] ...代表剩余所有轴完整索引
 
+# np.newaxis添加新轴 新轴的维度为1
+# np.newaxis是None的别名
+print(b.shape, b[:, np.newaxis, :].shape)  # (5, 4) (5, 1, 4)
+x = np.arange(5)
+print(x)
+print(x[:, None])
+# [[0]
+#  [1]
+#  [2]
+#  [3]
+#  [4]]
+print(x[None, :])  # [[0 1 2 3 4]]
+
+# 高级索引
+# 索引对象为ndarray(整数或布尔类型)
+# 高级索引返回数据副本, 而切片返回的视图(view)
+
+# 整数数组索引
+s = x[np.array([1, 2, 3])]  # 返回副本
+s[0] = 99
+print(s)  # [99  2  3]
+print(x)  # [[0 1 2 3 4]]
+
+b = x[1:4]  # 返回视图
+b[0] = 100
+print(b)  # [100   2   3]
+print(x)  # [  0 100   2   3   4]
+
+# 多维数组索引
+# result[i_1, ..., i_M] == x[ind_1[i_1, ..., i_M], ind_2[i_1, ..., i_M],
+#                            ..., ind_N[i_1, ..., i_M]]
+# 使用广播机制使所有索引形状相同(i_1,...i_M)
 a = np.arange(12).reshape(3, 4)
+print(a)
+# [[ 0  1  2  3]
+#  [ 4  5  6  7]
+#  [ 8  9 10 11]]
 i = np.array([[0, 1],  # indices for the first dim of `a`
               [1, 2]])
 j = np.array([[2, 1],  # indices for the second dim
               [3, 3]])
-print(a[i, j])
+print(a[i, j])  # i和j对应位置组成二元组作为索引
 # [[ 2  5]
 #  [ 7 11]]
-print(a[i, 2])
+print(a[i, 2])  # 广播组成二元组
 # [[ 2  6]
 #  [ 6 10]]
+print(a[np.array([0, 1, 2]), np.array([0, 1, 2])])  # 对角线
+# [ 0  5 10]
 
 # Boolean数组索引
 print(a > 4)
