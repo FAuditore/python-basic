@@ -9,9 +9,11 @@ print(a)
 #  [5. 4. 6.]]
 print(a.shape)  # (2,3)
 
-# 返回平铺的1维数组 浅拷贝
-print(a.ravel())
+print(a.ravel())  # 返回平铺的1维数组 浅拷贝
 # [5. 7. 6. 5. 4. 6.]
+
+print(a.flat)  # 返回1维迭代器, 浅拷贝
+# <numpy.flatiter object at 0x00000200F9CDF3A0>
 
 # 深拷贝
 print(a.flatten())  # [5. 7. 6. 5. 4. 6.]

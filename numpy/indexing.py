@@ -48,6 +48,7 @@ print(x[None, :])  # [[0 1 2 3 4]]
 # 高级索引返回数据副本, 而切片返回的视图(view)
 
 # 整数数组索引
+# 返回的是与索引数组具有相同形状的数组
 s = x[np.array([1, 2, 3])]  # 返回副本
 s[0] = 99
 print(s)  # [99  2  3]
@@ -77,18 +78,25 @@ print(a[i, j])  # i和j对应位置组成二元组作为索引
 print(a[i, 2])  # 广播组成二元组
 # [[ 2  6]
 #  [ 6 10]]
-print(a[np.array([0, 1, 2]), np.array([0, 1, 2])])  # 对角线
+print(a[[0, 1, 2], [0, 1, 2]])  # 对角线
 # [ 0  5 10]
 
+# ix_ 生成网格索引
+# a[np.ix_([1,3],[2,5])] returns the array [[a[1,2] a[1,5]], [a[3,2] a[3,5]]].
+print(a[np.ix_([0, 1], [0, 1])])
+# [[0 1]
+#  [4 5]]
+
 # Boolean数组索引
+# 索引对象维度需相同,返回一维数组 行优先
 print(a > 4)
-# [[False  True  True  True]
-#  [False False False  True]
-#  [ True  True False False]
+# [[False False False False]
 #  [False  True  True  True]
-#  [False False False  True]]
-print(a[a > 4])  # 返回一维数组 [ 5  6  7  8  9 10 11]
+#  [ True  True  True  True]]
+print(a[a > 4])  # [ 5  6  7  8  9 10 11]
 print(a[[True, False, False]])  # [[0 1 2 3]]
+x = np.array([[1., 2.], [np.nan, 3.], [np.nan, np.nan]])
+print(x[~np.isnan(x)])  # [1. 2. 3.]
 
 data = np.sin(np.arange(20)).reshape(5, 4)  # 4 time-dependent series
 print(data)
