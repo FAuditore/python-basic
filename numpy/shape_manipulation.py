@@ -9,16 +9,14 @@ print(a)
 #  [5. 4. 6.]]
 print(a.shape)  # (2,3)
 
-print(a.ravel())  # 返回平铺的1维数组 浅拷贝
-# [5. 7. 6. 5. 4. 6.]
-
-print(a.flat)  # 返回1维迭代器, 浅拷贝
+print(a.flat)  # 返回1维迭代器, 视图
 # <numpy.flatiter object at 0x00000200F9CDF3A0>
 
-# 深拷贝
-print(a.flatten())  # [5. 7. 6. 5. 4. 6.]
+print(a.ravel())  # 返回1维数组视图 [5. 7. 6. 5. 4. 6.]
 
-# 返回修改形状的数组
+print(a.flatten())  # 返回1维数组副本 [5. 7. 6. 5. 4. 6.]
+
+# 修改形状
 print(a.reshape(3, 2))
 # [[5. 7.]
 #  [6. 5.]
