@@ -71,10 +71,12 @@ print(c)
 
 # 由0组成的数组
 # 默认情况的数据类型是float64
-print(np.zeros((3, 4)))
+d = np.zeros((3, 4))
+print(d)
 # [[0. 0. 0. 0.]
 #  [0. 0. 0. 0.]
 #  [0. 0. 0. 0.]]
+print(d.astype(np.int_), np.int_(d))  # 转为int类型
 
 # 由1组成的数组
 print(np.ones((2, 2, 3), dtype=np.int16))
