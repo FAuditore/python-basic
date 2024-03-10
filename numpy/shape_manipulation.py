@@ -49,6 +49,16 @@ print(a)
 #   [4.]
 #   [6.]]]
 
+# append 将新元素添加到数组末尾
+a = np.array([[1, 2, 3]])
+# 不指定轴会转为1维数组追加
+print(np.append(a, [4, 5, 6]))  # [1 2 3 4 5 6]
+
+# 指定轴必须有正确的形状
+print(np.append(a, np.array([[4, 5, 6]]), axis=0))
+# [[1 2 3]
+#  [4 5 6]]
+
 # Stacking 沿不同轴堆叠
 print(a := np.floor(10 * np.random.random((2, 2))))
 # [[4. 8.]

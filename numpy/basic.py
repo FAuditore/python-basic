@@ -43,6 +43,9 @@ print(a.ndim)  # 3
 # n行和m列的矩阵, shape将是(n,m)
 print(a.shape)  # (2,2,3)
 
+# len - 第一维长度
+print(len(a))  # 2
+
 # ndarray.size - 数组元素的总数
 print(a.size)  # 12
 
