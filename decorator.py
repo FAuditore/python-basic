@@ -13,7 +13,7 @@ import functools
 import time
 
 
-def ExecTime(func):
+def Timer(func):
     fmt = 'elapse: {:.6f}s func: {}({})'
 
     # functools.wraps(func)
@@ -29,7 +29,7 @@ def ExecTime(func):
     return timer
 
 
-@ExecTime
+@Timer
 def original():
     for i in range(0, 10 ** 7):
         pass
@@ -39,7 +39,7 @@ original()
 print(original.__code__.co_freevars)  # fmt func
 
 
-@ExecTime
+@Timer
 def fact(n):
     return 1 if n < 2 else fact(n - 1) + fact(n - 2)
 
@@ -68,7 +68,7 @@ fact(5)
 # maxsize:缓存容量 typed:区分参数类型
 # 需要保证函数参数是可散列值
 @functools.lru_cache(maxsize=128, typed=False)
-@ExecTime
+@Timer
 def lru_fact(n):
     return 1 if n < 2 else lru_fact(n - 1) + lru_fact(n - 2)
 
