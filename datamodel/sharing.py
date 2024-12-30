@@ -14,6 +14,29 @@ a = 100.0
 print(id(a) == f(a))  # True
 
 
+def modify(x):
+    x[0] = 8
+    return x
+
+
+t = [1, 2, 3]
+print(t, modify(t))  # [8, 2, 3] [8, 2, 3]
+
+
+# t = (1, 2, 3)
+# print(t, modify(t)) # TypeError: 'tuple' object does not support item assignment
+
+def modify2(x):
+    x = (4, 5)  # x指向新的对象了
+    return x
+
+
+t = (1, 2, 3)
+print(t, modify2(t))  # (4, 5) (1, 2, 3)
+t = [1, 2, 3]
+print(t, modify2(t))  # (4, 5) [1, 2, 3]
+
+
 def make_copy(m):
     print(id(m), end=' ')
     m = list(m)  # 使用构造方法创建副本
