@@ -1,12 +1,13 @@
 # dict 字典
 # {key:value}
-# 可散列类型: str bytes 数值
+# 可散列类型: 不可变数据类型 例如 str bytes float int bool 以及所有元素都不可变的tuple
 #     要求实现 __hash__(self) 方法和 __eq__(self, other) 方法
 #     如果两个可散列对象相等,那么它们散列值相同
 #     即 x == y 同时意味着 x is y 且 hash(x) == hash(y)
 #     元组所有元素都可散列时元组才可散列
 from collections import Counter, UserDict, defaultdict
 
+# empty_dict = {}
 a = dict(one=1, two=2, three=3)
 b = {'one': 1, 'two': 2, 'three': 3}
 c = dict(zip(['one', 'two', 'three'], (1, 2, 3)))  # zip 生成元组组合 [('one',1),('two',2)('three',3)]
