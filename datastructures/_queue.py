@@ -42,5 +42,12 @@ print(dq.popleft())  # 0 deque([1, 2, 3, 4, 5, 6, 7, 8], maxlen=10)
 # 删除指定元素
 dq.remove(1)  # deque([2, 3, 4, 5, 6, 7, 8], maxlen=10)
 
+# 获取队列元素个数
+print(len(dq))  # 7
+
 # 清空队列
 dq.clear()  # deque([], maxlen=10)
+
+# 判断队列是否为空
+print(len(dq))  # 0
+print(not dq)  # True
