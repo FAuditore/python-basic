@@ -196,7 +196,7 @@ print(list(itertools.starmap(operator.mul, enumerate(s, 1))))
 # 合并多个可迭代对象的生成器函数
 
 # zip(it1, ..., itN)并行从输入的各个可迭代对象中获取元素,产出由 N 个元素组成的元组
-print(list(zip('abc', [1, 2, 3])))  # [('a', 1), ('b', 2), ('c', 3)]
+print(list(zip('abc', [1, 2, 3, 4])))  # [('a', 1), ('b', 2), ('c', 3)]
 
 # itertools.zip_longest(it1, ..., itN, fillvalue=None)与zip类似
 # 等到最长的可迭代对象到头后才停止, 空缺的值使用 fillvalue 填充
