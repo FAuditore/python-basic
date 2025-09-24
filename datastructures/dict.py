@@ -59,12 +59,13 @@ class MyDict(UserDict):
         return self[str(key)]  # warning: 可能会无限递归
 
 
-# counter 计数器
+# collections.Counter 计数器
 c = Counter('hello world')
 print(c)  # Counter({'l': 3, 'o': 2, 'h': 1, 'e': 1, ' ': 1, 'w': 1, 'r': 1, 'd': 1})
 print(c.most_common(3))  # [('l', 3), ('o', 2), ('h', 1)]
 print(sorted(c))  # [' ', 'd', 'e', 'h', 'l', 'o', 'r', 'w'] 展示所有不重复元素 等价于sorted(set('hello world'))
 print(c['o'])  # 2
+print(c & Counter('abcdef'))  # Counter({'e': 1, 'd': 1}) 支持与运算 取共有的key value取最小值
 
 # Python3.9字典合并(|)和更新(|=)运算符
 print(d1 := dict(zip('abc', [1, 2, 3])))  # {'a': 1, 'b': 2, 'c': 3}
